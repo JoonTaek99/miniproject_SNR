@@ -22,7 +22,6 @@ public class UserService {
    private UserMapper userMapper;
    
    @Autowired
-   
    public boolean addUser(AddUserCommand addUserCommand) {
       
       UserDto mdto = new UserDto();
