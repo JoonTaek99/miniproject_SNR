@@ -45,12 +45,14 @@ public class UserService {
       String path="user/main";
       if(dto!=null) {
          //로그인 폼에서 입력받은 패스워드값과 DB에 암호화된 패스워드 비교
-         if(loginCommand.getPassword()==dto.getPassword()) {
+    	  System.out.println(loginCommand.getPassword());
+    	  System.out.println(dto.getPassword());
+         if(loginCommand.getPassword().equals(dto.getPassword())) {
             System.out.println("패스워드 같음: 회원이 맞음");
             //session객체에 로그인 정보 저장
             request.getSession().setAttribute("mdto", dto);
             System.out.println(dto.getRole());
-            if(dto.getRole().equals("EAGLE")) {
+            if(dto.getRole().equals("ADMIN")) {
                System.out.println(loginCommand.getId());
                path = "user/adminmain";
             }
