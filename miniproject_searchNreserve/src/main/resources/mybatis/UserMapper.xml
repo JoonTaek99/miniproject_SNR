@@ -4,46 +4,46 @@
 <mapper namespace="com.board.mapper.UserMapper">
 	
 	<insert id="addUser" parameterType="userDto">
-		INSERT INTO HHUSERINFO
+		INSERT INTO USERINFO
 		VALUES(NULL,#{id},#{name},#{password},#{address},'Y',#{role},SYSDATE())
 	</insert>
 	
 	<select id="idChk" parameterType="String" resultType="String">
-		SELECT ID FROM HHUSERINFO WHERE ID = #{id}
+		SELECT ID FROM USERINFO WHERE ID = #{id}
 	</select>
 	
 	<select id="loginUser" parameterType="String" resultType="userDto">
 		SELECT  ID, NAME, PASSWORD, ADDRESS, ROLE
-		FROM HHUSERINFO
+		FROM USERINFO
 		WHERE ID = #{id} AND ENABLED = 'Y'
 	</select>
 	
 	<select id="userInfo" parameterType="String" resultType="userDto">
 		SELECT ID, NAME, ADDRESS, ROLE
-		FROM HHUSERINFO
+		FROM USERINFO
 		WHERE ID = #{id}
 	</select>
 	
 	<update id="updateUser" parameterType="userDto">
-		UPDATE HHUSERINFO
+		UPDATE USERINFO
 		SET name = #{name}, role = #{role}, address = #{address}
 		WHERE ID = #{id}
 	</update>
 	
 	<update id="delUser" parameterType="String">
-		UPDATE HHUSERINFO
+		UPDATE USERINFO
 		SET enabled = 'N'
 		WHERE ID = #{id}
 	</update>
 	
 	<select id="getAllUserList" resultType="userDto">
-		select id, name, address, role, enabled, regdate
-		from hhuserinfo
+		SELECT ID, NAME, ADDRESS, ROLE, ENABLED, REGDATE
+		FROM USERINFO
 		where role = "EGG"
 	</select>
 	
 	<update id="mulDel" parameterType="Map">
-      UPDATE HHUSERINFO SET enabled = 'N' WHERE id IN
+      UPDATE USERINFO SET enabled = 'N' WHERE id IN
       <foreach collection="id" item="id" open="(" close=")"
                separator=",">
          #{id}
