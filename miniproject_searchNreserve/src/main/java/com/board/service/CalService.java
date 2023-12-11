@@ -30,7 +30,7 @@ public class CalService {
       //달력의 날짜를 바꾸기 위해 전달된 year와 month 파라미터를 받는 코드
       String paramYear=request.getParameter("year");
       String paramMonth=request.getParameter("month");
-      
+
       Calendar cal=Calendar.getInstance(); // 추상클래스이고, static 메서드 new(X)
       
       int   year=(paramYear==null)?cal.get(Calendar.YEAR):Integer.parseInt(paramYear) ;
@@ -65,8 +65,8 @@ public class CalService {
       return map;
    }
 
-   public List<CalDto> calViewList(String yyyyMM){
-      return calmapper.calViewList(yyyyMM);
+   public List<CalDto> calViewList(int seq,String yyyyMM){
+      return calmapper.calViewList(seq, yyyyMM);
    }
    
    

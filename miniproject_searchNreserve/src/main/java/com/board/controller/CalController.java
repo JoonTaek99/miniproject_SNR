@@ -42,29 +42,33 @@ public class CalController {
    @Autowired CalService calService;
    
    @GetMapping(value="/calendar")
-   public String calendar(Model model, HttpServletRequest request) {
-      logger.info("달력보기"); 
-      
-      String year=request.getParameter("year");
-      String month=request.getParameter("month");
-      
-      if(year==null||month==null) {
-         Calendar cal=Calendar.getInstance();
-         year=cal.get(Calendar.YEAR)+"";
-         month=(cal.get(Calendar.MONTH)+1)+"";
-      }
-      System.out.println("year:"+year);
-      System.out.println("month:"+month);
-      //달력만들기위한 값 구하기
-      Map<String, Integer>map=calService.makeCalendar(request);
-      model.addAttribute("calMap", map);
-      
-      String yyyyMM=year+Util.isTwo(month);//202311 6자리변환
-      List<CalDto>clist=calService.calViewList(yyyyMM);
-      model.addAttribute("clist", clist);
-      
-      return "calboard/Calendar";
-   }
+	public String calendar(Model model, int seq, HttpServletRequest request) {
+		logger.info("달력보기"); 
+		
+		//달력에서 일일별 일정목록 구하기
+		//String id="kbj";//나중에 세션에서 가져온 아이디 사용
+		
+		String year=request.getParameter("year");
+		String month=request.getParameter("month");
+		
+		if(year==null||month==null) {
+			Calendar cal=Calendar.getInstance();
+			year=cal.get(Calendar.YEAR)+"";
+			month=(cal.get(Calendar.MONTH)+1)+"";
+		}
+		System.out.println("year:"+year);
+		System.out.println("month:"+month);
+		//달력만들기위한 값 구하기
+		Map<String, Integer>map=calService.makeCalendar(request);
+		model.addAttribute("calMap", map);
+		
+//		makeCalendar()에서 실행해야 12->1   1->12 처리시 정상실행할 수 있음
+		String yyyyMM=year+Util.isTwo(month);//202311 6자리변환
+		List<CalDto>clist=calService.calViewList(seq, yyyyMM);
+		model.addAttribute("clist", clist);
+		
+		return "calboard/Calendar";
+	}
    @GetMapping(value = "/addCalBoardForm")
    public String addCalBoardForm(Model model, InsertCalCommand insertCalCommand) {
       logger.info("일정추가폼이동");

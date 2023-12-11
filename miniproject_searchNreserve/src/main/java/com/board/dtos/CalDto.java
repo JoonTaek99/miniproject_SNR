@@ -13,6 +13,8 @@ public class CalDto {
 	private String content;
 	private String mdate;
 	private Date regdate;
+	private String name;
+	
 	public String getId() {
 		return id;
 	}
@@ -66,6 +68,12 @@ public class CalDto {
 	public CalDto() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	

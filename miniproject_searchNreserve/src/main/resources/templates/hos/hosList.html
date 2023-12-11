@@ -65,7 +65,7 @@
             <td th:text="${dto.type}"></td>
             <td th:text="${dto.address}"></td>
             <td th:text="${dto.phone}"></td>
-            <td><button type="button" style="width: 50px; height: 25px; font-size: 10px;" th:onclick="|location.href='@{/schedule/calendar}'|">예약</button></td>
+            <td><button type="button" style="width: 50px; height: 25px; font-size: 10px;" th:onclick="|location.href='@{/schedule/calendar(seq=${dto.seq})}'|">예약</button></td>
          </tr>
       </th:block>
    </table>
