@@ -26,4 +26,19 @@ public class HosController {
 		
 		return "hos/hosList";
 	}
+	
+	@GetMapping(value = "/selectList")
+	public String SelectList(Model model, String type) {
+		System.out.println("검색목록 보기");
+		List<HosDto> list = hosService.getSelectList(type);
+		model.addAttribute("list", list);
+		return "hos/hosList";
+	}
 }
+
+
+
+
+
+
+

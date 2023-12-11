@@ -8,10 +8,10 @@
 		FROM HOSINFO
 	</select>
 	
-	<select id="selectList" parameterType="String" resultType="HosDto">
+	<select id="getSelectList" parameterType="String" resultType="HosDto">
 		SELECT NAME, TYPE, ADDRESS, CONTENT, PHONE
 		FROM HOSINFO
-		WHRER TYPE = #{type}
+		WHERE TYPE = #{type}
 	</select>
 
 </mapper>

@@ -6,10 +6,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-function showResult(){
+// function showResult(){
+// 	 	var type = document.getElementById('search').value;
+// 	 	console.log(type);
+// 	    location.href='/hos/selectList';
 	   
-	   
-}
+// }
 </script>
 <style type="text/css">
 .lead{
@@ -41,13 +43,14 @@ function showResult(){
 </head>
 <body>
 <div layout:fragment="content">
+	<form action="/hos/selectList" method="get">
 	<div class="lead">
 	      <span th:text="${session.mdto.id}"></span>[<span th:text="${session.mdto.role}"></span>]님께서 로그인하셨습니다.
 	</div>
 	<h1>검색 페이지</h1>
 	<div class="search" style="text-align: center;">
-		<input type="text" id="search" style="float: left;"  placeholder="검색어 입력" />
-		<button id="add" type="button" style="float: left;" class="btn btn-dark mt-3" onclick="showResult()">검색</button>
+		<input type="text" id="search" name="type" style="float: left;"  placeholder="검색어 입력" />
+		<button id="add" type="submit" style="float: left;" class="btn btn-dark mt-3" >검색</button>
 	</div>
 	<table class="table table-bordered table-striped col-md-12" id="news" >
       <tr>
@@ -73,6 +76,7 @@ function showResult(){
          </tr>
       </th:block>
    </table>
+   </form>
 </div>
 </body>
 </html>
