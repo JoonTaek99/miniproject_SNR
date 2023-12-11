@@ -37,10 +37,10 @@
 	</delete>
 	
 	<select id="calViewList" parameterType="Map" resultType="CalDto">
-	SELECT rn,seq, title,content, mdate, regdate, name	
+	SELECT rn, seq, title,content, mdate, regdate, name	
 	from	(SELECT ROW_NUMBER() over(PARTITION BY SUBSTR(mdate,1,8)
 		                             ORDER BY mdate) rn
-		       , c.seq, title,c.content, mdate, regdate, h.name
+		       , c.seq, title, c.content, mdate, regdate, h.name
 		    FROM calboard c join hosinfo h on c.seq=h.seq 
 			 WHERE c.seq=#{seq} AND SUBSTR(mdate,1,6)=#{yyyyMM}
 			 ) cal

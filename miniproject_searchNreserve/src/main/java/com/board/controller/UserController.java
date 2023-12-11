@@ -118,14 +118,14 @@ public class UserController {
       return "redirect:/user/userInfo";
       
    }
-//   
-//   @GetMapping(value = "/delUser")
-//   public String delUser(LoginCommand loginCommand, HttpServletRequest request) {
-//      System.out.println("유저 탈퇴시작");
-//      
-//      userService.delUser(loginCommand, request);
-//      return "home";
-//   }
+   
+   @GetMapping(value = "/delUser")
+   public String delUser(LoginCommand loginCommand, HttpServletRequest request) {
+      System.out.println("유저 탈퇴시작");
+      
+      userService.delUser(loginCommand, request);
+      return "home";
+   }
 //   
 //   
 //   @GetMapping(value = "/allUserList")
