@@ -6,7 +6,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-
+function showResult(){
+	   
+	   
+}
 </script>
 <style type="text/css">
 .lead{
@@ -14,22 +17,67 @@
    padding: 10px;
 }
 
-/* body{ */
-/*    background-image: url("/css/og.jpg"); */
-/*    background-size: cover; */
-/* } */
+ .search{ 
+ 	position: relative; 
+ 	width: 300px;
+ } 
+
+ input{ 
+ 	width: 100%; 
+ 	border: 1px solid #bbb; 
+ 	border-radius: 8px; 
+	padding: 10px 12px; 
+	font-size: 14px; 
+ } 
+
+ button { 
+   position : absolute; 
+   width: 50px; 
+   margin: 0; 
+ }
+
+
 </style>
 </head>
 <body>
 <div layout:fragment="content">
-<div class="lead">
-      <span th:text="${session.mdto.id}"></span>[<span th:text="${session.mdto.role}"></span>]님께서 로그인하셨습니다.
-</div>
-<h1>메인 페이지</h1>
-<div style="text-align: center;">
-
-   <p style="font-size: 50px;">상단의 메뉴바를 선택해서 서비스를 이용해주세요</p>
-</div>
+	<div class="lead">
+	      <span th:text="${session.mdto.id}"></span>[<span th:text="${session.mdto.role}"></span>]님께서 로그인하셨습니다.
+	</div>
+	<h1>검색 페이지</h1>
+	<div class="search">
+		<input type="text" id="search" placeholder="검색어 입력" />
+		<button id="add" type="button" class="btn btn-dark mt-3" onclick="showResult()">검색</button>
+	</div>
+	<table class="table table-bordered table-striped col-md-12" id="news" >
+      <tr>
+         <th>작성자</th>
+         <th>제목</th>
+         <th>작성일</th>
+         <th>조회수</th>
+         <th>번호</th>
+      </tr>   
+      <th:block th:if="${#lists.isEmpty(list)}">
+         <tr>
+            <td colspan="4" style="text-align: center;">---검색결과가 없습니다.---</td>
+         </tr>
+      </th:block>
+      <th:block th:unless="${#lists.isEmpty(list)}">
+         <tr th:each="dto:${list}">
+            <td><input type="checkbox" name="seq" th:field="*{seq}" th:value="${dto.board_seq}" /></td>
+            <td th:text="${dto.id}"></td>
+            <td>
+               <a th:href="@{/news/newsBoardDetail(board_seq=${dto.board_seq})}" th:text="${dto.title}"></a>
+            </td>
+            <td th:text="${#dates.format(dto.regdate, 'yyyy-MM-dd')}"></td>
+            <td th:text="${dto.readCount}"></td>
+            <td th:text="${dto.refer}"></td>
+         </tr>
+      </th:block>
+            <tr>
+         <td colspan="10" style="text-align: center;">
+      </tr>
+   </table>
 </div>
 </body>
 </html>
