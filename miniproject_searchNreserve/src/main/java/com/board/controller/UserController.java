@@ -95,29 +95,29 @@ public class UserController {
       return "redirect:/";
    }
    
-//   @GetMapping(value = "/userInfo")
-//   public String userInfo(Model model, LoginCommand loginCommand, HttpServletRequest request) {
-//      System.out.println("유저정보창으로 이동");
-//      UserDto dto = userService.userInfo(loginCommand, request);
-//      
-//      model.addAttribute("dto", dto);
-//      
-//      return "user/userInfo";
-//   }
-//   
-//   @PostMapping(value = "/userUpdate")
-//   public String userUpdate(@Validated UserUpdateCommand userUpdateCommand
-//                              ,BindingResult result) {
-//      System.out.println("유저정보 수정시작");
-//      if(result.hasErrors()) {
-//         System.out.println("수정내용을 모두 입력해주세요");
-//         return "user/userInfo";
-//      }
-//      userService.updateUser(userUpdateCommand);
-//      
-//      return "redirect:/user/userInfo";
-//      
-//   }
+   @GetMapping(value = "/userInfo")
+   public String userInfo(Model model, LoginCommand loginCommand, HttpServletRequest request) {
+      System.out.println("유저정보창으로 이동");
+      UserDto dto = userService.userInfo(loginCommand, request);
+      
+      model.addAttribute("dto", dto);
+      
+      return "user/userInfo";
+   }
+   
+   @PostMapping(value = "/userUpdate")
+   public String userUpdate(@Validated UserUpdateCommand userUpdateCommand
+                              ,BindingResult result) {
+      System.out.println("유저정보 수정시작");
+      if(result.hasErrors()) {
+         System.out.println("수정내용을 모두 입력해주세요");
+         return "user/userInfo";
+      }
+      userService.updateUser(userUpdateCommand);
+      
+      return "redirect:/user/userInfo";
+      
+   }
 //   
 //   @GetMapping(value = "/delUser")
 //   public String delUser(LoginCommand loginCommand, HttpServletRequest request) {
