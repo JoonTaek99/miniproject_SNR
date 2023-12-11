@@ -52,6 +52,7 @@
          <th>구분</th>
          <th>주소</th>
          <th>전화번호</th>
+         <th>예약</th>
       </tr>   
       <th:block th:if="${#lists.isEmpty(list)}">
          <tr>
@@ -60,13 +61,11 @@
       </th:block>
       <th:block th:unless="${#lists.isEmpty(list)}">
          <tr th:each="dto:${list}">
-<!--             <td> -->
-<!--                <a th:href="#" th:text="${dto.name}"></a> -->
-<!--             </td> -->
             <td th:text="${dto.name}"></td>
             <td th:text="${dto.type}"></td>
             <td th:text="${dto.address}"></td>
             <td th:text="${dto.phone}"></td>
+            <td><button type="button" style="width: 50px; height: 25px; font-size: 10px;" th:onclick="|location.href='@{/schedule/calendar}'|">예약</button></td>
          </tr>
       </th:block>
    </table>

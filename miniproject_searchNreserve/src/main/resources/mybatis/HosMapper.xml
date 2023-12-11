@@ -4,12 +4,12 @@
 <mapper namespace="com.board.mapper.HosMapper">
 
 	<select id="getAllList" resultType="HosDto">
-		SELECT NAME, TYPE, ADDRESS, CONTENT, PHONE
+		SELECT SEQ, NAME, TYPE, ADDRESS, CONTENT, PHONE
 		FROM HOSINFO
 	</select>
 	
 	<select id="getSelectList" parameterType="String" resultType="HosDto">
-		SELECT NAME, TYPE, ADDRESS, CONTENT, PHONE
+		SELECT SEQ, NAME, TYPE, ADDRESS, CONTENT, PHONE
 		FROM HOSINFO
 		WHERE TYPE = #{type}
 	</select>

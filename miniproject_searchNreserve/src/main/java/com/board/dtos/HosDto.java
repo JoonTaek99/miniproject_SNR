@@ -1,6 +1,7 @@
 package com.board.dtos;
 
 public class HosDto {
+	int seq;
 	String name;
 	String type;
 	String address;
@@ -10,8 +11,9 @@ public class HosDto {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public HosDto(String name, String type, String address, String content, String phone) {
+	public HosDto(int seq, String name, String type, String address, String content, String phone) {
 		super();
+		this.seq = seq;
 		this.name = name;
 		this.type = type;
 		this.address = address;
@@ -20,8 +22,14 @@ public class HosDto {
 	}
 	@Override
 	public String toString() {
-		return "HosDto [name=" + name + ", type=" + type + ", address=" + address + ", content=" + content + ", phone="
-				+ phone + "]";
+		return "HosDto [seq=" + seq + ", name=" + name + ", type=" + type + ", address=" + address + ", content="
+				+ content + ", phone=" + phone + "]";
+	}
+	public int getSeq() {
+		return seq;
+	}
+	public void setSeq(int seq) {
+		this.seq = seq;
 	}
 	public String getName() {
 		return name;
