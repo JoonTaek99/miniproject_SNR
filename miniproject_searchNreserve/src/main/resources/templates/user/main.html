@@ -44,40 +44,7 @@ function showResult(){
 	<div class="lead">
 	      <span th:text="${session.mdto.id}"></span>[<span th:text="${session.mdto.role}"></span>]님께서 로그인하셨습니다.
 	</div>
-	<h1>검색 페이지</h1>
-	<div class="search">
-		<input type="text" id="search" placeholder="검색어 입력" />
-		<button id="add" type="button" class="btn btn-dark mt-3" onclick="showResult()">검색</button>
-	</div>
-	<table class="table table-bordered table-striped col-md-12" id="news" >
-      <tr>
-         <th>작성자</th>
-         <th>제목</th>
-         <th>작성일</th>
-         <th>조회수</th>
-         <th>번호</th>
-      </tr>   
-      <th:block th:if="${#lists.isEmpty(list)}">
-         <tr>
-            <td colspan="4" style="text-align: center;">---검색결과가 없습니다.---</td>
-         </tr>
-      </th:block>
-      <th:block th:unless="${#lists.isEmpty(list)}">
-         <tr th:each="dto:${list}">
-            <td><input type="checkbox" name="seq" th:field="*{seq}" th:value="${dto.board_seq}" /></td>
-            <td th:text="${dto.id}"></td>
-            <td>
-               <a th:href="@{/news/newsBoardDetail(board_seq=${dto.board_seq})}" th:text="${dto.title}"></a>
-            </td>
-            <td th:text="${#dates.format(dto.regdate, 'yyyy-MM-dd')}"></td>
-            <td th:text="${dto.readCount}"></td>
-            <td th:text="${dto.refer}"></td>
-         </tr>
-      </th:block>
-            <tr>
-         <td colspan="10" style="text-align: center;">
-      </tr>
-   </table>
+
 </div>
 </body>
 </html>
