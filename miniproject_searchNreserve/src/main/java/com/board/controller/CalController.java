@@ -77,7 +77,7 @@ public class CalController {
    }
    @PostMapping(value = "/addCalBoard")
    public String addCalBoard(@Validated InsertCalCommand insertCalCommand,
-                       BindingResult result) throws Exception {
+                       BindingResult result,int seq) throws Exception {
       logger.info("일정추가하기");
       System.out.println(insertCalCommand);
       if(result.hasErrors()) {
